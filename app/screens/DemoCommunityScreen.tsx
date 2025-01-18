@@ -1,7 +1,7 @@
 import { FC } from "react"
 import { Image, ImageStyle, TextStyle, View, ViewStyle } from "react-native"
 import { ListItem, Screen, Text } from "../components"
-import { DemoTabScreenProps } from "../navigators/Navigator"
+import { TabScreenProps } from "../navigators/Navigator"
 import { $styles } from "../theme"
 import { openLinkInBrowser } from "../utils/openLinkInBrowser"
 import { isRTL } from "../i18n"
@@ -13,7 +13,7 @@ const reactNativeLiveLogo = require("../../assets/images/demo/rnl-logo.png")
 const reactNativeRadioLogo = require("../../assets/images/demo/rnr-logo.png")
 const reactNativeNewsletterLogo = require("../../assets/images/demo/rnn-logo.png")
 
-export const DemoCommunityScreen: FC<DemoTabScreenProps<"DemoCommunity">> =
+export const DemoCommunityScreen: FC<TabScreenProps<"DemoCommunity">> =
   function DemoCommunityScreen(_props) {
     const { themed } = useAppTheme()
     return (

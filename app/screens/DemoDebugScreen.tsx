@@ -10,7 +10,7 @@ import {
   ViewStyle,
 } from "react-native"
 import { Button, ListItem, Screen, Text } from "../components"
-import { DemoTabScreenProps } from "../navigators/Navigator"
+import { TabScreenProps } from "../navigators/Navigator"
 import type { ThemedStyle } from "@/theme"
 import { $styles } from "../theme"
 import { isRTL } from "../i18n"
@@ -27,7 +27,7 @@ function openLinkInBrowser(url: string) {
 
 const usingHermes = typeof HermesInternal === "object" && HermesInternal !== null
 
-export const DemoDebugScreen: FC<DemoTabScreenProps<"DemoDebug">> = function DemoDebugScreen(
+export const DemoDebugScreen: FC<TabScreenProps<"DemoDebug">> = function DemoDebugScreen(
   _props,
 ) {
   const { setThemeContextOverride, themeContext, themed } = useAppTheme()
