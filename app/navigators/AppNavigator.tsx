@@ -2,6 +2,7 @@
  * Primary navigation file.
  * Contains an auth flow and a "main" flow which the user will use once logged in.
  */
+import React from "react"
 import { NavigationContainer, NavigatorScreenParams } from "@react-navigation/native"
 import { createNativeStackNavigator, NativeStackScreenProps } from "@react-navigation/native-stack"
 import { observer } from "mobx-react-lite"
