@@ -30,7 +30,7 @@ export const SettingsScreen: FC<TabScreenProps<"Settings">> = function SettingsS
     authenticationStore: { logout },
   } = useStores()
   const [time, setTime] = useState(new Date());
-      const [showTimePicker, setShowTimePicker] = useState(false);
+  const [showTimePicker, setShowTimePicker] = useState(false);
 
   const handleLogout = async () => {
     try {
@@ -85,7 +85,7 @@ export const SettingsScreen: FC<TabScreenProps<"Settings">> = function SettingsS
       <View style={themed($buttonContainer)}>
         <Button style={themed($button)} tx="common:logOut" onPress={handleLogout} />
       </View>
-      <Button text="Pick a time" onPress={() => setShowTimePicker(true)} />
+      <Button style={themed($button)} text="Pick a time" onPress={() => setShowTimePicker(true)} />
         {showTimePicker && (
           <DateTimePicker
             value={time}
@@ -94,7 +94,7 @@ export const SettingsScreen: FC<TabScreenProps<"Settings">> = function SettingsS
             onChange={onTimeChange}
           />
         )}
-        <Button text="Submit" onPress={onSubmit} />
+        <Button style={themed($button)} text="Submit" onPress={onSubmit} />
     </Screen>
   )
 }
