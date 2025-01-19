@@ -1,7 +1,1 @@
-TODO LIST:
-
-1. Presentation
-2. Robotic arm
-3. Clean up
-4. Better UI (modal)
-5. Connect add coffee to firebase
+![image](https://github.com/user-attachments/assets/6a77e997-651d-4e1f-b310-a96959738041)
