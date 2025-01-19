@@ -5,7 +5,7 @@ import { Button, Icon, Screen, Text, TextField, TextFieldAccessoryProps } from "
 import { useStores } from "../models"
 import { AppStackScreenProps } from "../navigators"
 import { colors, spacing } from "../theme"
-import { auth, database } from "../../config/firebase";
+import { api } from "../services/api";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore"
 import { useNavigation } from "@react-navigation/native"
@@ -22,12 +22,10 @@ export const LoginScreen: FC<LoginScreenProps> = observer(function LoginScreen(_
 
   const onHandleLogin = async () => {
     try {
-      const userCredential = await signInWithEmailAndPassword(auth, authEmail, authPassword);
+      const userCredential = await signInWithEmailAndPassword(api.auth, authEmail, authPassword);
       // The user is now logged in, you can get the user details from userCredential.user
       const user = userCredential.user;
       const token = await user.getIdToken();
-      __DEV__ && console.tron.log('user', user);
-      __DEV__ && console.tron.log('token', token);
       setAuthToken(token);
       // Do something with the logged-in user
     } catch (error) {
@@ -106,9 +104,9 @@ export const LoginScreen: FC<LoginScreenProps> = observer(function LoginScreen(_
       contentContainerStyle={$screenContentContainer}
       safeAreaEdges={["top", "bottom"]}
     >
-      <Text testID="login-heading" tx="loginScreen.signIn" preset="heading" style={$signIn} />
-      <Text tx="loginScreen.enterDetails" preset="subheading" style={$enterDetails} />
-      {attemptsCount > 2 && <Text tx="loginScreen.hint" size="sm" weight="light" style={$hint} />}
+      <Text testID="login-heading" tx="loginScreen:logIn" preset="heading" style={$signIn} />
+      <Text tx="loginScreen:enterDetails" preset="subheading" style={$enterDetails} />
+      {attemptsCount > 2 && <Text tx="loginScreen:hint" size="sm" weight="light" style={$hint} />}
 
       <TextField
         value={authEmail}
@@ -118,8 +116,8 @@ export const LoginScreen: FC<LoginScreenProps> = observer(function LoginScreen(_
         autoComplete="email"
         autoCorrect={false}
         keyboardType="email-address"
-        labelTx="loginScreen.emailFieldLabel"
-        placeholderTx="loginScreen.emailFieldPlaceholder"
+        labelTx="loginScreen:emailFieldLabel"
+        placeholderTx="loginScreen:emailFieldPlaceholder"
         helper={error}
         status={error ? "error" : undefined}
       // onSubmitEditing={() => authPasswordInput.current?.focus()}
@@ -134,8 +132,8 @@ export const LoginScreen: FC<LoginScreenProps> = observer(function LoginScreen(_
         autoComplete="password"
         autoCorrect={false}
         secureTextEntry={isAuthPasswordHidden}
-        labelTx="loginScreen.passwordFieldLabel"
-        placeholderTx="loginScreen.passwordFieldPlaceholder"
+        labelTx="loginScreen:passwordFieldLabel"
+        placeholderTx="loginScreen:passwordFieldPlaceholder"
         // onSubmitEditing={login}
         RightAccessory={PasswordRightAccessory}
       />
@@ -145,7 +143,7 @@ export const LoginScreen: FC<LoginScreenProps> = observer(function LoginScreen(_
 
       <Button
         testID="login-button"
-        tx="loginScreen.tapToSignIn"
+        tx="loginScreen:tapToLogIn"
         style={$tapButton}
         preset="reversed"
         // onPress={login}

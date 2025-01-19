@@ -9,7 +9,6 @@ import { initializeApp } from "firebase/app";
 import { getFirestore, doc, getDoc } from "firebase/firestore";
 import type { UserSnapshotIn } from "../../models/User";
 import { getAuth } from "firebase/auth";
-import { getDate } from "date-fns";
 
 /**
  * Configuring the instance.

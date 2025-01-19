@@ -77,9 +77,9 @@ export const SignUpScreen: FC<SignUpScreenProps> = observer(function SignUpScree
       contentContainerStyle={$screenContentContainer}
       safeAreaEdges={["top", "bottom"]}
     >
-      <Text testID="login-heading" tx="signUpScreen.signIn" preset="heading" style={$signIn} />
-      <Text tx="signUpScreen.enterDetails" preset="subheading" style={$enterDetails} />
-      {attemptsCount > 2 && <Text tx="signUpScreen.hint" size="sm" weight="light" style={$hint} />}
+      <Text testID="login-heading" tx="signUpScreen:signIn" preset="heading" style={$signIn} />
+      <Text tx="signUpScreen:enterDetails" preset="subheading" style={$enterDetails} />
+      {attemptsCount > 2 && <Text tx="signUpScreen:hint" size="sm" weight="light" style={$hint} />}
 
 
 
@@ -91,8 +91,8 @@ export const SignUpScreen: FC<SignUpScreenProps> = observer(function SignUpScree
         autoComplete="email"
         autoCorrect={false}
         keyboardType="email-address"
-        labelTx="signUpScreen.emailFieldLabel"
-        placeholderTx="signUpScreen.emailFieldPlaceholder"
+        labelTx="signUpScreen:emailFieldLabel"
+        placeholderTx="signUpScreen:emailFieldPlaceholder"
       />
 
       <TextField
@@ -101,8 +101,8 @@ export const SignUpScreen: FC<SignUpScreenProps> = observer(function SignUpScree
         containerStyle={$textField}
         autoCapitalize="none"
         autoCorrect={false}
-        labelTx="signUpScreen.nameFieldLabel"
-        placeholderTx="signUpScreen.nameFieldPlaceholder"
+        labelTx="signUpScreen:nameFieldLabel"
+        placeholderTx="signUpScreen:nameFieldPlaceholder"
 
       />
 
@@ -114,8 +114,8 @@ export const SignUpScreen: FC<SignUpScreenProps> = observer(function SignUpScree
         autoComplete="password"
         autoCorrect={false}
         secureTextEntry={isAuthPasswordHidden}
-        labelTx="signUpScreen.passwordFieldLabel"
-        placeholderTx="signUpScreen.passwordFieldPlaceholder"
+        labelTx="signUpScreen:passwordFieldLabel"
+        placeholderTx="signUpScreen:passwordFieldPlaceholder"
 
       />
 
@@ -123,16 +123,15 @@ export const SignUpScreen: FC<SignUpScreenProps> = observer(function SignUpScree
 
       <Button
         testID="login-button"
-        tx="signUpScreen.tapToSignIn"
+        tx="signUpScreen:tapToSignIn"
         style={$tapButton}
         preset="reversed"
         onPress={onHandleSignup}
       />
 
       <TouchableOpacity style={$loginButton} onPress={goToLogin}>
-        <Text>Have an accoount ? Login</Text>
+        <Text>Have an account? Login</Text>
       </TouchableOpacity>
-
 
     </Screen>
   )
@@ -169,5 +168,3 @@ const $loginButton: ViewStyle = {
   alignItems: 'center',
   padding: 10,
 }
-
-// @demo remove-file

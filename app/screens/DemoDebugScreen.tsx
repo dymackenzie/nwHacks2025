@@ -36,20 +36,20 @@ export const DemoDebugScreen: FC<TabScreenProps<"DemoDebug">> = function DemoDeb
     authenticationStore: { logout },
   } = useStores()
 
-  const handleLogout = async () => {
-    try {
-      await signOut(auth);
-      // Successfully logged out from Firebase Auth, now call logout from authenticationStore
-      logout();
-    } catch (error) {
-      // Handle errors here, such as displaying an alert
-      if (error instanceof Error) {
-        //Alert.alert("Logout failed", error.message);
-      } else {
-       // Alert.alert("Logout failed", "An unknown error occurred");
-      }
-    }
-  };
+  // const handleLogout = async () => {
+  //   try {
+  //     await signOut(auth);
+  //     // Successfully logged out from Firebase Auth, now call logout from authenticationStore
+  //     logout();
+  //   } catch (error) {
+  //     // Handle errors here, such as displaying an alert
+  //     if (error instanceof Error) {
+  //       //Alert.alert("Logout failed", error.message);
+  //     } else {
+  //      // Alert.alert("Logout failed", "An unknown error occurred");
+  //     }
+  //   }
+  // };
 
   // @ts-expect-error
   const usingFabric = global.nativeFabricUIManager != null
