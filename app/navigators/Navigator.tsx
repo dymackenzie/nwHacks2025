@@ -11,14 +11,16 @@ import { AppStackParamList, AppStackScreenProps } from "./AppNavigator"
 import { useAppTheme } from "@/utils/useAppTheme"
 import { StatsScreen } from "@/screens/StatsScreen"
 import { BigRedButtonScreen as BigButtonScreen } from "@/screens/BigButtonScreen"
+import { NotificationsDemoScreen } from "@/screens/NotificationsDemo"
 
 export type TabParamList = {
-  DemoCommunity: undefined
-  DemoShowroom: { queryIndex?: string; itemIndex?: string }
-  DemoDebug: undefined
-  DemoPodcastList: undefined
+  // DemoCommunity: undefined
+  // DemoShowroom: { queryIndex?: string; itemIndex?: string }
+  // DemoDebug: undefined
+  // DemoPodcastList: undefined
   BigButton: undefined
   Stats: undefined
+  NotificationsDemo: undefined
 }
 
 /**
@@ -68,7 +70,7 @@ export function Navigator() {
         }}
       />
 
-      <Tab.Screen
+      {/* <Tab.Screen
         name="DemoShowroom"
         component={DemoShowroomScreen}
         options={{
@@ -77,9 +79,9 @@ export function Navigator() {
             <Icon icon="components" color={focused ? colors.tint : colors.tintInactive} size={30} />
           ),
         }}
-      />
+      /> */}
 
-      <Tab.Screen
+      {/* <Tab.Screen
         name="DemoCommunity"
         component={DemoCommunityScreen}
         options={{
@@ -88,9 +90,9 @@ export function Navigator() {
             <Icon icon="community" color={focused ? colors.tint : colors.tintInactive} size={30} />
           ),
         }}
-      />
+      /> */}
 
-      <Tab.Screen
+      {/* <Tab.Screen
         name="DemoPodcastList"
         component={DemoPodcastListScreen}
         options={{
@@ -100,7 +102,7 @@ export function Navigator() {
             <Icon icon="podcast" color={focused ? colors.tint : colors.tintInactive} size={30} />
           ),
         }}
-      />
+      /> */}
 
       <Tab.Screen
         name="BigButton"
@@ -115,6 +117,18 @@ export function Navigator() {
       />
 
       <Tab.Screen
+        name="NotificationsDemo"
+        component={NotificationsDemoScreen}
+        options={{
+          tabBarAccessibilityLabel: translate("Navigator:buttonTab"),
+          tabBarLabel: translate("Navigator:buttonTab"),
+          tabBarIcon: ({ focused }) => (
+            <Icon icon="clap" color={focused ? colors.tint : colors.tintInactive} size={30} />
+          ),
+        }}
+      />
+
+      {/* <Tab.Screen
         name="DemoDebug"
         component={DemoDebugScreen}
         options={{
@@ -123,7 +137,7 @@ export function Navigator() {
             <Icon icon="debug" color={focused ? colors.tint : colors.tintInactive} size={30} />
           ),
         }}
-      />
+      /> */}
     </Tab.Navigator>
   )
 }

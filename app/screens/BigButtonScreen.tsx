@@ -9,16 +9,16 @@ import { $styles } from "../theme"
 import { useAppTheme } from "@/utils/useAppTheme"
 
 export const BigRedButtonScreen: FC<TabScreenProps<"BigButton">> =
-  function StatsScreen(_props) {
+  function ButtonScreen(_props) {
     const { themed } = useAppTheme()
     const [counter, setCounter] = useState(0);
     const [message, setMessage] = useState('');
 
   const handleSubmit = async () => {
     if (true) {
-      console.log("sending request to send to arduino");
+      console.log("sending request to send to arduino on 10.");
       try {
-        const response = await axios.post('http://localhost:5001/send', {
+        const response = await axios.post('http://10.43.183.251:5001/send', {
           msg: "press",
         });
         setMessage(response.data.message);

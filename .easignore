@@ -83,7 +83,6 @@ npm-debug.*
 *.orig.*
 web-build/
 latte-less-firebase-adminsdk-fbsvc-335a433ad9.json
-google-services.json
 
 # Configurations
 !env.js

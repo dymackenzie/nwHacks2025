@@ -23,7 +23,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/app-icon-android-adaptive-foreground.png",
         "backgroundImage": "./assets/images/app-icon-android-adaptive-background.png"
-      }
+      },
+      "googleServicesFile": "./google-services.json"
     },
     "ios": {
       "icon": "./assets/images/app-icon-ios.png",
@@ -49,7 +50,13 @@
     ],
     "experiments": {
       "tsconfigPaths": true
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "ac99b535-9c55-48af-900c-100dcff6f03a"
+      }
+    },
+    "owner": "adambrett40"
   },
   "ignite": {
     "version": "10.1.4"

@@ -2,7 +2,7 @@
  * Primary navigation file.
  * Contains an auth flow and a "main" flow which the user will use once logged in.
  */
-import React from "react"
+import React, { useEffect, useRef } from "react"
 import { NavigationContainer, NavigatorScreenParams } from "@react-navigation/native"
 import { createNativeStackNavigator, NativeStackScreenProps } from "@react-navigation/native-stack"
 import { observer } from "mobx-react-lite"
@@ -13,6 +13,8 @@ import { Navigator, TabParamList } from "./Navigator"
 import { navigationRef, useBackButtonHandler } from "./navigationUtilities"
 import { useAppTheme, useThemeProvider } from "@/utils/useAppTheme"
 import { ComponentProps } from "react"
+import * as Notifications from 'expo-notifications';
+import { registerForPushNotificationsAsync } from "@/screens/NotificationsDemo"
 
 export type AppStackParamList = {
   Welcome: undefined
@@ -75,6 +77,46 @@ export const AppNavigator = observer(function AppNavigator(props: NavigationProp
     useThemeProvider()
 
   useBackButtonHandler((routeName) => exitRoutes.includes(routeName))
+
+  const responseListener = useRef<any>()
+
+  useEffect(() => {
+    // Handle notification tap
+    responseListener.current = Notifications.addNotificationResponseReceivedListener((response: any) => {
+      // console.log("Notification Response:", JSON.stringify(response, null, 2));
+  const data = response?.notification?.request?.content?.data;
+  // console.log("Notification Data:", data);
+  console.log("Screen:", data.screen);
+      if (navigationRef.isReady() && data?.screen) {
+        console.log("navigating to ", data.screen);
+        navigationRef.navigate(data.screen || {})//, data.params
+      }
+    })
+
+    // Clean up on unmount
+    return () => {
+      if (responseListener.current) {
+        Notifications.removeNotificationSubscription(responseListener.current)
+      }
+    }
+  }, [])
+
+  // useEffect(() => {
+  //   registerForPushNotificationsAsync().then(token => setExpoPushToken(token));
+  
+  //   notificationListener.current = Notifications.addNotificationReceivedListener(notification => {
+  //     setNotification(notification);
+  //   });
+  
+  //   responseListener.current = Notifications.addNotificationResponseReceivedListener(response => {
+  //     console.log(response);
+  //   });
+  
+  //   return () => {
+  //     Notifications.removeNotificationSubscription(notificationListener.current);
+  //     Notifications.removeNotificationSubscription(responseListener.current);
+  //   };
+  // }, []);
 
   return (
     <ThemeProvider value={{ themeScheme, setThemeContextOverride }}>
