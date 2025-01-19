@@ -67,10 +67,10 @@ const en = {
     title: "Settings",
   },
   coffee: {
-    title: "Drink Coffee? Press Coffee To Start",
+    title: "Coffee? Press To Start Your Machine",
     description: "Press Coffee Cup",
-    coffeePromptLabel: "Manual addition",
-    coffeePrompt: "Put cups of coffee drank today",
+    coffeePromptLabel: "External Sources",
+    coffeePrompt: "Input cups of coffee bought today",
     submit: "Submit",
   },
   demoCommunityScreen: {
