@@ -17,7 +17,7 @@ import { ComponentProps } from "react"
 export type AppStackParamList = {
   Welcome: undefined
   Login: undefined
-  Demo: NavigatorScreenParams<TabParamList>
+  Main: NavigatorScreenParams<TabParamList>
   // extra screens can go here
 }
 
@@ -55,7 +55,7 @@ const AppStack = observer(function AppStack() {
         <>
           <Stack.Screen name="Welcome" component={Screens.WelcomeScreen} />
 
-          <Stack.Screen name="Demo" component={Navigator} />
+          <Stack.Screen name="Main" component={Navigator} />
         </>
       ) : (
         <>

@@ -9,12 +9,14 @@ import { DemoPodcastListScreen } from "../screens/DemoPodcastListScreen"
 import type { ThemedStyle } from "@/theme"
 import { AppStackParamList, AppStackScreenProps } from "./AppNavigator"
 import { useAppTheme } from "@/utils/useAppTheme"
+import { StatsScreen } from "@/screens/StatsScreen"
 
 export type TabParamList = {
   DemoCommunity: undefined
   DemoShowroom: { queryIndex?: string; itemIndex?: string }
   DemoDebug: undefined
   DemoPodcastList: undefined
+  Stats: undefined
 }
 
 /**
@@ -52,6 +54,18 @@ export function Navigator() {
         tabBarItemStyle: themed($tabBarItem),
       }}
     >
+
+    <Tab.Screen
+        name="Stats"
+        component={StatsScreen}
+        options={{
+          tabBarLabel: "Stats",
+          tabBarIcon: ({ focused }) => (
+            <Icon icon="stats" color={focused ? colors.tint : colors.tintInactive} size={30} />
+          ),
+        }}
+      />
+
       <Tab.Screen
         name="DemoShowroom"
         component={DemoShowroomScreen}

@@ -49,6 +49,9 @@ const en = {
     communityTab: "Community",
     podcastListTab: "Podcast",
   },
+  statsScreen: {
+    title: "Let's see how you're doing!",
+  },
   demoCommunityScreen: {
     title: "Connect with the community",
     tagLine:
