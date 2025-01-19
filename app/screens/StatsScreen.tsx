@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from "react"
 import {SafeAreaView, SafeAreaProvider} from 'react-native-safe-area-context';
-import { Image, ImageStyle, TextStyle, View, ViewStyle, Alert, Modal, StyleSheet, Pressable } from "react-native"
-import { CafeStatsCard, Screen, Text } from "../components"
+import { Image, ImageStyle, TextStyle, View, ViewStyle, Modal, StyleSheet, Pressable, Alert } from "react-native"
+import { CafeStatsCard, Screen, Text, Button } from "../components"
 import { TabScreenProps } from "../navigators/Navigator"
 import { $styles } from "../theme"
 import type { ThemedStyle } from "@/theme"
@@ -13,6 +13,7 @@ import AddCoffeeModal from "@/components/AddCoffeeModal";
 
 const history_icon = require("../../assets/icons/project/history.png")
 const coins_icon = require("../../assets/icons/project/coins.png")
+const trend_icon = require("../../assets/icons/project/trend.png")
 
 export const StatsScreen: FC<TabScreenProps<"Stats">> =
   function StatsScreen(_props) {
@@ -81,7 +82,7 @@ export const StatsScreen: FC<TabScreenProps<"Stats">> =
         <AddCoffeeModal visible={modalVisible} setModalVisible={setModalVisible} setCoffee={setCoffee}/>
         <CafeStatsCard title="History" stats="Track your coffee intake over the past week!" graphData={{ labels: [], datasets: [{ data: history }] }} image={history_icon} money={null}/>
         <CafeStatsCard title="Money" stats="Tsk tsk... how much money you spent." graphData={null} image={coins_icon} money={money}/>
-        
+        <CafeStatsCard title="Trend" stats="Longest streak without drinking coffee!" graphData={null} image={trend_icon} money={null} />
 
       </Screen>
     )

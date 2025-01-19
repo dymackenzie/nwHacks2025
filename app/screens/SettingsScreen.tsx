@@ -1,5 +1,6 @@
-import { FC, useCallback, useMemo } from "react"
+import { FC, useCallback, useState } from "react"
 import * as Application from "expo-application"
+import DateTimePicker from "@react-native-community/datetimepicker"
 import {
   Alert,
   LayoutAnimation,
@@ -28,6 +29,8 @@ export const SettingsScreen: FC<TabScreenProps<"Settings">> = function SettingsS
   const {
     authenticationStore: { logout },
   } = useStores()
+  const [time, setTime] = useState(new Date());
+      const [showTimePicker, setShowTimePicker] = useState(false);
 
   const handleLogout = async () => {
     try {
@@ -49,6 +52,25 @@ export const SettingsScreen: FC<TabScreenProps<"Settings">> = function SettingsS
     setThemeContextOverride(themeContext === "dark" ? "light" : "dark")
   }, [themeContext, setThemeContextOverride])
 
+  const onTimeChange = (event: any, selectedDate: Date | undefined) => {
+    const currentTime = selectedDate || time;
+    setShowTimePicker(false);
+    setTime(currentTime);
+  };
+
+  const onSubmit = async () => {
+    if (api.auth.currentUser === null) {
+      return;
+    }
+    try {
+      await api.addTimesToDrinkCoffee(api.auth.currentUser?.uid, time);
+      Alert.alert("Success", "Time to drink coffee updated successfully.");
+    } catch (error) {
+      console.error('Error updating time to drink coffee:', error);
+      Alert.alert("Error", "Failed to update time to drink coffee.");
+    }
+  };
+
   return (
     <Screen
       preset="scroll"
@@ -63,6 +85,16 @@ export const SettingsScreen: FC<TabScreenProps<"Settings">> = function SettingsS
       <View style={themed($buttonContainer)}>
         <Button style={themed($button)} tx="common:logOut" onPress={handleLogout} />
       </View>
+      <Button text="Pick a time" onPress={() => setShowTimePicker(true)} />
+        {showTimePicker && (
+          <DateTimePicker
+            value={time}
+            mode="time"
+            display="default"
+            onChange={onTimeChange}
+          />
+        )}
+        <Button text="Submit" onPress={onSubmit} />
     </Screen>
   )
 }

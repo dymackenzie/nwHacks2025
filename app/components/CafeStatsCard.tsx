@@ -2,6 +2,7 @@ import React from "react"
 import { View, Text, StyleSheet, Image, ImageSourcePropType } from "react-native"
 import { LineChart } from "react-native-chart-kit"
 import { colors, spacing } from "../theme"
+import { FontDisplay } from "expo-font"
 
 interface CafeStatsCardProps {
   title: string
@@ -26,8 +27,8 @@ export const CafeStatsCard: React.FC<CafeStatsCardProps> = ({ title, stats, grap
       {(graphData && graphData.labels && graphData.datasets && graphData.datasets.length > 0 && graphData.datasets[0].data.length > 0) && (
         <LineChart
           data={graphData}
-          width={300}
-          height={220}
+          width={240}
+          height={240}
           chartConfig={chartConfig}
           bezier
           style={styles.chart}
@@ -42,8 +43,8 @@ export const CafeStatsCard: React.FC<CafeStatsCardProps> = ({ title, stats, grap
 const chartConfig = {
   backgroundGradientFrom: colors.transparent,
   backgroundGradientTo: colors.transparent,
-  backgroundGradientFromOpacity: 0,
-  color: (opacity = 1) => `rgba(134, 65, 244, ${opacity})`,
+  backgroundGradientFromOpacity: 1,
+  color: (opacity = 1) => `rgba(193, 219, 212, ${opacity})`,
   labelColor: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
   style: {
     borderRadius: 16,
@@ -85,12 +86,11 @@ const styles = StyleSheet.create({
   stats: {
     fontSize: 16,
     fontWeight: "bold",
-    color: colors.text,
+    color: colors.textDim,
     marginBottom: spacing.md,
   },
   chart: {
     marginVertical: spacing.md,
-    marginRight: spacing.xl,
   },
   money: {
     fontSize: 16,
