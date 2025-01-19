@@ -1,22 +1,24 @@
 /**
  * This Api class lets you define an API endpoint and methods to request
  * data and process it.
- *
- * See the [Backend API Integration](https://docs.infinite.red/ignite-cli/boilerplate/app/services/#backend-api-integration)
- * documentation for more details.
  */
-import { ApiResponse, ApisauceInstance, create } from "apisauce"
 import Config from "../../config"
-import { GeneralApiProblem, getGeneralApiProblem } from "./apiProblem"
-import type { ApiConfig, ApiFeedResponse } from "./api.types"
-import type { EpisodeSnapshotIn } from "../../models/Episode"
+import type { ApiConfig } from "./api.types"
+
+import { initializeApp } from "firebase/app";
+import { getFirestore, doc, getDoc } from "firebase/firestore";
+import type { UserSnapshotIn } from "../../models/User";
 
 /**
  * Configuring the apisauce instance.
  */
 export const DEFAULT_API_CONFIG: ApiConfig = {
-  url: Config.API_URL,
-  timeout: 10000,
+  apiKey: Config.apiKey,
+  authDomain: Config.authDomain,
+  projectId: Config.projectId,
+  storageBucket: Config.storageBucket,
+  messagingSenderId: Config.messagingSenderId,
+  appId: Config.appId,
 }
 
 /**
@@ -24,54 +26,31 @@ export const DEFAULT_API_CONFIG: ApiConfig = {
  * various requests that you need to call from your backend API.
  */
 export class Api {
-  apisauce: ApisauceInstance
-  config: ApiConfig
 
   /**
-   * Set up our API instance. Keep this lightweight!
+   * Set up our API instance.
    */
-  constructor(config: ApiConfig = DEFAULT_API_CONFIG) {
-    this.config = config
-    this.apisauce = create({
-      baseURL: this.config.url,
-      timeout: this.config.timeout,
-      headers: {
-        Accept: "application/json",
-      },
-    })
+  constructor(config : ApiConfig = DEFAULT_API_CONFIG) {
+    initializeApp(config);
   }
 
   /**
-   * Gets a list of recent React Native Radio episodes.
+   * Gets user by ID.
    */
-  async getEpisodes(): Promise<{ kind: "ok"; episodes: EpisodeSnapshotIn[] } | GeneralApiProblem> {
-    // make the api call
-    const response: ApiResponse<ApiFeedResponse> = await this.apisauce.get(
-      `api.json?rss_url=https%3A%2F%2Ffeeds.simplecast.com%2FhEI_f9Dx`,
-    )
-
-    // the typical ways to die when calling an api
-    if (!response.ok) {
-      const problem = getGeneralApiProblem(response)
-      if (problem) return problem
-    }
-
-    // transform the data into the format we are expecting
+  async getUser(userId: string): Promise<{ user: UserSnapshotIn | null }> {
     try {
-      const rawData = response.data
-
-      // This is where we transform the data into the shape we expect for our MST model.
-      const episodes: EpisodeSnapshotIn[] =
-        rawData?.items.map((raw) => ({
-          ...raw,
-        })) ?? []
-
-      return { kind: "ok", episodes }
+      const db = getFirestore();
+      const userDoc = await getDoc(doc(db, "users", userId));
+      if (userDoc.exists()) {
+        return { user: userDoc.data() as UserSnapshotIn };
+      } else {
+        return { user: null };
+      }
     } catch (e) {
       if (__DEV__ && e instanceof Error) {
-        console.error(`Bad data: ${e.message}\n${response.data}`, e.stack)
+        console.error(`Error fetching user: ${e.message}`, e.stack);
       }
-      return { kind: "bad-data" }
+      return { user: null };
     }
   }
 }
