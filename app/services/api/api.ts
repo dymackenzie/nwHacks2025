@@ -83,6 +83,38 @@ export class Api {
       return { kind: "bad-data" };
     }
   }
+
+  async addCoffee(
+    guid: any,
+    coffeeDate: number,
+    coffeeDetails: any
+  ): Promise<{ kind: "ok" } | { kind: "bad-data" }> {
+    try {
+      const db = getFirestore();
+      const userRef = doc(db, "users", guid);
+  
+      // Merge the new coffee details with the existing coffeeHistory
+      await setDoc(
+        userRef,
+        {
+          coffeeHistory: {
+            [coffeeDate]: coffeeDetails,
+          },
+        },
+        { merge: true }
+      );
+  
+      return { kind: "ok" };
+    } catch (e) {
+      if (__DEV__ && e instanceof Error) {
+        console.error(`Error updating coffee history: ${e.message}`, e.stack);
+      }
+      return { kind: "bad-data" };
+    }
+  }
+  
 }
+
+
 // Singleton instance of the API for convenience
 export const api = new Api();

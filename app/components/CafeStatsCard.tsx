@@ -15,6 +15,7 @@ interface CafeStatsCardProps {
 }
 
 export const CafeStatsCard: React.FC<CafeStatsCardProps> = ({ title, stats, graphData, image, money }) => {
+  // graphData ? graphData.datasets = [{data: [1, 2, 3, 4]}] : null;
   return (
     <View style={styles.card}>
       <View style={styles.header}>
@@ -22,7 +23,7 @@ export const CafeStatsCard: React.FC<CafeStatsCardProps> = ({ title, stats, grap
         <Text style={styles.title}>{title}</Text>
       </View>
       <Text style={styles.stats}>{stats}</Text>
-      {graphData && (
+      {(graphData && graphData.labels && graphData.datasets && graphData.datasets.length > 0 && graphData.datasets[0].data.length > 0) && (
         <LineChart
           data={graphData}
           width={300}
@@ -48,8 +49,8 @@ const chartConfig = {
     borderRadius: 16,
   },
   propsForDots: {
-    r: "6",
-    strokeWidth: "2",
+    r: 6,  // Changed to number
+    strokeWidth: 2,  // Changed to number
     stroke: colors.palette.primary500,
   },
 }

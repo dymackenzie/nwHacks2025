@@ -1,5 +1,6 @@
 import { FC, useEffect, useState } from "react"
-import { Image, ImageStyle, TextStyle, View, ViewStyle } from "react-native"
+import {SafeAreaView, SafeAreaProvider} from 'react-native-safe-area-context';
+import { Image, ImageStyle, TextStyle, View, ViewStyle, Alert, Modal, StyleSheet, Pressable } from "react-native"
 import { CafeStatsCard, Screen, Text } from "../components"
 import { TabScreenProps } from "../navigators/Navigator"
 import { $styles } from "../theme"
@@ -8,6 +9,7 @@ import { useAppTheme } from "@/utils/useAppTheme"
 import { User } from "@/models/User"
 import { api } from "@/services/api"
 import { UserModel } from "@/models/User"
+import AddCoffeeModal from "@/components/AddCoffeeModal";
 
 const history_icon = require("../../assets/icons/project/history.png")
 const coins_icon = require("../../assets/icons/project/coins.png")
@@ -15,6 +17,7 @@ const coins_icon = require("../../assets/icons/project/coins.png")
 export const StatsScreen: FC<TabScreenProps<"Stats">> =
   function StatsScreen(_props) {
     const { themed } = useAppTheme()
+    const [modalVisible, setModalVisible] = useState(false);
     const [user, setUser] = useState<User | null>(null);
     const [history, setHistory] = useState<number[]>([]);
     const [money, setMoney] = useState<number | null>(null);
@@ -57,10 +60,25 @@ export const StatsScreen: FC<TabScreenProps<"Stats">> =
       setMoney(user.moneySpent);
     }
 
+    const setCoffee = (numCups: number) => {
+      console.log("cups received:", numCups);
+      if (user === null) {
+        return;
+      }
+      api.addCoffee(user, Date.now(), numCups);
+    }
+
     return (
       <Screen preset="scroll" contentContainerStyle={$styles.container} safeAreaEdges={["top"]}>
         <Text preset="heading" tx="statsScreen:title" style={themed($title)} />
-        
+        <View>
+        <Pressable
+          style={[styles.button, styles.buttonOpen]}
+          onPress={() => {setModalVisible(true); console.log("setting modal to visible")}}>
+          <Text style={styles.textStyle}>Show Modal</Text>
+        </Pressable>
+        </View>
+        <AddCoffeeModal visible={modalVisible} setModalVisible={setModalVisible} setCoffee={setCoffee}/>
         <CafeStatsCard title="History" stats="Track your coffee intake over the past week!" graphData={{ labels: [], datasets: [{ data: history }] }} image={history_icon} money={null}/>
         <CafeStatsCard title="Money" stats="Tsk tsk... how much money you spent." graphData={null} image={coins_icon} money={money}/>
         
@@ -97,3 +115,18 @@ const $logo: ImageStyle = {
   height: 38,
   width: 38,
 }
+const styles = StyleSheet.create({
+  button: {
+    borderRadius: 20,
+    padding: 10,
+    elevation: 2,
+  },
+  buttonOpen: {
+    backgroundColor: '#F194FF',
+  },
+  textStyle: {
+    color: 'white',
+    fontWeight: 'bold',
+    textAlign: 'center',
+  }
+});

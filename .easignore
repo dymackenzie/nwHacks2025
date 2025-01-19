@@ -92,4 +92,4 @@ latte-less-firebase-adminsdk-fbsvc-335a433ad9.json
 # Yarn
 .yarn/*
 
-.env
+; .env
