@@ -5,7 +5,7 @@ import { Button, Icon, Screen, Text, TextField, TextFieldAccessoryProps } from "
 import { useStores } from "../models"
 import { AppStackScreenProps } from "../navigators"
 import { colors, spacing } from "../theme"
-import { auth, database } from "../../config/firebase";
+import { api } from "../services/api";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore"
 import { useNavigation } from "@react-navigation/native"
@@ -14,17 +14,17 @@ interface SignUpScreenProps extends AppStackScreenProps<"SignUp"> { }
 
 export const SignUpScreen: FC<SignUpScreenProps> = observer(function SignUpScreen() {
 
-  const navigation = useNavigation()
+  const navigation = useNavigation<AppStackScreenProps<"SignUp">["navigation"]>()
 
   const goToLogin = () => {
-    navigation.navigate('Login')
+    navigation.navigate('Login');
   }
 
   const onHandleSignup = async () => {
     try {
-      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const userCredential = await createUserWithEmailAndPassword(api.auth, email, password);
       const user = userCredential.user;
-      const userRef = doc(database, "users", user.uid);
+      const userRef = doc(api.database, "users", user.uid);
       await setDoc(userRef, {
         displayName: name,
         email: email,

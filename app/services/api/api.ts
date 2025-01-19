@@ -8,9 +8,11 @@ import type { ApiConfig } from "./api.types"
 import { initializeApp } from "firebase/app";
 import { getFirestore, doc, getDoc } from "firebase/firestore";
 import type { UserSnapshotIn } from "../../models/User";
+import { getAuth } from "firebase/auth";
+import { getDate } from "date-fns";
 
 /**
- * Configuring the apisauce instance.
+ * Configuring the instance.
  */
 export const DEFAULT_API_CONFIG: ApiConfig = {
   apiKey: Config.apiKey,
@@ -27,11 +29,16 @@ export const DEFAULT_API_CONFIG: ApiConfig = {
  */
 export class Api {
 
+  public auth;
+  public database;
+
   /**
    * Set up our API instance.
    */
   constructor(config : ApiConfig = DEFAULT_API_CONFIG) {
     initializeApp(config);
+    this.auth = getAuth();
+    this.database = getFirestore();
   }
 
   /**

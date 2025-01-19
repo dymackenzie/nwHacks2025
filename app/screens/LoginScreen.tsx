@@ -14,7 +14,7 @@ interface LoginScreenProps extends AppStackScreenProps<"Login"> { }
 
 export const LoginScreen: FC<LoginScreenProps> = observer(function LoginScreen(_props) {
   const authPasswordInput = useRef<TextInput>(null)
-  const navigation = useNavigation()
+  const navigation = useNavigation<AppStackScreenProps<"Login">["navigation"]>()
 
   const goSignUp = () => {
     navigation.navigate("SignUp");
