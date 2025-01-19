@@ -1,6 +1,6 @@
 import { FC, useEffect, useState } from "react"
-import { Image, ImageStyle, TextStyle, View, ViewStyle } from "react-native"
-import { CafeStatsCard, Screen, Text } from "../components"
+import { Image, ImageStyle, TextStyle, View, ViewStyle, Alert } from "react-native"
+import { CafeStatsCard, Screen, Text, Button } from "../components"
 import { TabScreenProps } from "../navigators/Navigator"
 import { $styles } from "../theme"
 import type { ThemedStyle } from "@/theme"

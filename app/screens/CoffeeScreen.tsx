@@ -35,7 +35,7 @@ export const CoffeeScreen: FC<TabScreenProps<"CoffeeScreen">> =
       }
       if (coffee && parseInt(coffee)) {
         var coffeeInt = parseInt(coffee);
-        api.addCoffee(coffeeInt);
+        // api.addCoffee(coffeeInt);
       }
     }
 
