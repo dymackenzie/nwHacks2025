@@ -81,7 +81,7 @@ export function Navigator() {
             <Icon icon="coffee" color={focused ? colors.tint : colors.tintInactive} size={25} />
           ),
         }}
-      /> */}
+      />
 
       <Tab.Screen
         name="BigButton"
@@ -107,16 +107,16 @@ export function Navigator() {
         }}
       />
 
-      {/* <Tab.Screen
-        name="DemoDebug"
-        component={DemoDebugScreen}
+      <Tab.Screen
+        name="Settings"
+        component={SettingsScreen}
         options={{
           tabBarLabel: "Settings",
           tabBarIcon: ({ focused }) => (
             <Icon icon="settings" color={focused ? colors.tint : colors.tintInactive} size={25} />
           ),
         }}
-      /> */}
+      />
     </Tab.Navigator>
   )
 }
