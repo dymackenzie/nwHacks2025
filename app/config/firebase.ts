@@ -3,10 +3,10 @@ import Constants from 'expo-constants';
 const extra = Constants.expoConfig?.extra ?? {};
 
 export default {
-    apiKey: extra.API_KEY,
-    authDomain: extra.AUTH_DOMAIN,
-    projectId: extra.PROJECT_ID,
-    storageBucket: extra.STORAGE_BUCKET,
-    messagingSenderId: extra.MESSAGING_SENDER_ID,
-    appId: extra.APP_ID,
+    apiKey: process.env.EXPO_PUBLIC_API_KEY,
+    authDomain: process.env.EXPO_PUBLIC_AUTH_DOMAIN,
+    projectId: process.env.EXPO_PUBLIC_PROJECT_ID,
+    storageBucket: process.env.EXPO_PUBLIC_STORAGE_BUCKET,
+    messagingSenderId: process.env.EXPO_PUBLIC_MESSAGING_SENDER_ID,
+    appId: process.env.EXPO_PUBLIC_APP_ID,
 };

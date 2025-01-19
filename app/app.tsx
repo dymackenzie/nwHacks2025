@@ -25,7 +25,7 @@ const config = {
     Login: {
       path: "",
     },
-    SignUp: "signup",
+    Signup: "signup",
     Welcome: "welcome",
     Demo: {
       screens: {

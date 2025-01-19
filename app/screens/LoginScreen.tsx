@@ -23,25 +23,17 @@ export const LoginScreen: FC<LoginScreenProps> = observer(function LoginScreen(_
   const onHandleLogin = async () => {
     try {
       const userCredential = await signInWithEmailAndPassword(api.auth, authEmail, authPassword);
-      // The user is now logged in, you can get the user details from userCredential.user
       const user = userCredential.user;
       const token = await user.getIdToken();
       setAuthToken(token);
-      // Do something with the logged-in user
     } catch (error) {
       if (error instanceof Error) {
         Alert.alert("Login Failed", error.message);
       } else {
-        // Handle any other types of errors or objects
         Alert.alert("Login Failed", 'An unknown error occurred');
       }
     }
   };
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [imageURL, setImageURL] = useState("");
-
 
   const [authPassword, setAuthPassword] = useState("")
   const [isAuthPasswordHidden, setIsAuthPasswordHidden] = useState(true)
@@ -51,36 +43,7 @@ export const LoginScreen: FC<LoginScreenProps> = observer(function LoginScreen(_
     authenticationStore: { authEmail, setAuthEmail, setAuthToken, validationError },
   } = useStores()
 
-  useEffect(() => {
-    // Here is where you could fetch credentials from keychain or storage
-    // and pre-fill the form fields.
-    setAuthEmail("ignite@infinite.red")
-    setAuthPassword("ign1teIsAwes0m3")
-
-    // Return a "cleanup" function that React will run when the component unmounts
-    return () => {
-      setAuthPassword("")
-      setAuthEmail("")
-    }
-  }, [])
-
   const error = isSubmitted ? validationError : ""
-
-  function login() {
-    setIsSubmitted(true)
-    setAttemptsCount(attemptsCount + 1)
-
-    if (validationError) return
-
-    // Make a request to your server to get an authentication token.
-    // If successful, reset the fields and set the token.
-    setIsSubmitted(false)
-    setAuthPassword("")
-    setAuthEmail("")
-
-    // We'll mock this with a fake token.
-    setAuthToken(String(Date.now()))
-  }
 
   const PasswordRightAccessory: ComponentType<TextFieldAccessoryProps> = useMemo(
     () =>
@@ -146,14 +109,13 @@ export const LoginScreen: FC<LoginScreenProps> = observer(function LoginScreen(_
         tx="loginScreen:tapToLogIn"
         style={$tapButton}
         preset="reversed"
-        // onPress={login}
         onPress={onHandleLogin}
       />
 
 
 
       <TouchableOpacity style={$signUpButton} onPress={goSignUp}>
-        <Text>Don't Have accoount ? Sign Up</Text>
+        <Text>Don't have an account? Sign Up</Text>
       </TouchableOpacity>
 
     </Screen>

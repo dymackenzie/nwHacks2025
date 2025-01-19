@@ -26,17 +26,18 @@ export const SignUpScreen: FC<SignUpScreenProps> = observer(function SignUpScree
       const user = userCredential.user;
       const userRef = doc(api.database, "users", user.uid);
       await setDoc(userRef, {
-        displayName: name,
+        guid: user.uid,
+        name: name,
         email: email,
-        uid: user.uid,
-        photoURL: "",
-        phoneNumber: "",
+        timesToDrinkCoffee: [],
+        coffeeHistory: {},
+        externalCoffeeHistory: {},
       });
+      
     } catch (error) {
       if (error instanceof Error) {
         Alert.alert(error.message);
       } else {
-        // Handle any other types of errors or objects
         Alert.alert('An unknown error occurred');
       }
     }
@@ -81,7 +82,16 @@ export const SignUpScreen: FC<SignUpScreenProps> = observer(function SignUpScree
       <Text tx="signUpScreen:enterDetails" preset="subheading" style={$enterDetails} />
       {attemptsCount > 2 && <Text tx="signUpScreen:hint" size="sm" weight="light" style={$hint} />}
 
+      <TextField
+        value={name}
+        onChangeText={setName}
+        containerStyle={$textField}
+        autoCapitalize="none"
+        autoCorrect={false}
+        labelTx="signUpScreen:nameFieldLabel"
+        placeholderTx="signUpScreen:nameFieldPlaceholder"
 
+      />
 
       <TextField
         value={email}
@@ -93,17 +103,6 @@ export const SignUpScreen: FC<SignUpScreenProps> = observer(function SignUpScree
         keyboardType="email-address"
         labelTx="signUpScreen:emailFieldLabel"
         placeholderTx="signUpScreen:emailFieldPlaceholder"
-      />
-
-      <TextField
-        value={name}
-        onChangeText={setName}
-        containerStyle={$textField}
-        autoCapitalize="none"
-        autoCorrect={false}
-        labelTx="signUpScreen:nameFieldLabel"
-        placeholderTx="signUpScreen:nameFieldPlaceholder"
-
       />
 
       <TextField

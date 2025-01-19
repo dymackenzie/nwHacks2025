@@ -1,4 +1,4 @@
-import { Instance, SnapshotIn, SnapshotOut, types } from "mobx-state-tree"
+import { Instance, SnapshotIn, SnapshotOut, types, getSnapshot } from "mobx-state-tree"
 import { withSetPropAction } from "./helpers/withSetPropAction"
 
 export const CoffeeEntry = types.model({

@@ -18,7 +18,7 @@ export type AppStackParamList = {
   Welcome: undefined
   Login: undefined
   Main: NavigatorScreenParams<TabParamList>
-  SignUp: undefined
+  Signup: undefined
   // extra screens can go here
 }
 
@@ -65,7 +65,7 @@ const AppStack = observer(function AppStack() {
       )}
 
       {<>
-        <Stack.Screen name="SignUp" component={Screens.SignUpScreen} />
+        <Stack.Screen name="Signup" component={Screens.SignUpScreen} />
       </>}
     </Stack.Navigator>
   )
