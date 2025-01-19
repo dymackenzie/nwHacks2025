@@ -59,6 +59,10 @@ export const colors = {
    */
   background: palette.neutral200,
   /**
+   * The default color for card backgrounds.
+   */
+  cardBackground: palette.neutral400,
+  /**
    * The default border color.
    */
   border: palette.neutral400,

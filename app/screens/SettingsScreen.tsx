@@ -73,6 +73,7 @@ const $container: ThemedStyle<ViewStyle> = ({ spacing }) => ({
 
 const $title: ThemedStyle<TextStyle> = ({ spacing }) => ({
   marginBottom: spacing.lg,
+  paddingHorizontal: spacing.lg,
 })
 
 const $itemsContainer: ThemedStyle<ViewStyle> = ({ spacing }) => ({
