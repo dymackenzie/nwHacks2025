@@ -85,14 +85,21 @@ export class Api {
   }
 
   async addCoffee(
-    guid: any,
-    coffeeDate: number,
+    // guid: any,
+    // coffeeDate: number
     coffeeDetails: any
   ): Promise<{ kind: "ok" } | { kind: "bad-data" }> {
+    console.log("addCoffee", coffeeDetails)
+    const guid = api.auth.currentUser ? api.auth.currentUser.uid : null;
+    if (!guid) {
+      console.log("not logged in");
+      return { kind: "bad-data" };
+    }
+    const coffeeDate = Date.now();
     try {
       const db = getFirestore();
       const userRef = doc(db, "users", guid);
-  
+      console.log("sending to firestore", guid, coffeeDate, coffeeDetails);
       // Merge the new coffee details with the existing coffeeHistory
       await setDoc(
         userRef,

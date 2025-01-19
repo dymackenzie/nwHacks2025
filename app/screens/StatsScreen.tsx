@@ -61,25 +61,25 @@ export const StatsScreen: FC<TabScreenProps<"Stats">> =
       setMoney(user.moneySpent);
     }
 
-    const setCoffee = (numCups: number) => {
-      console.log("cups received:", numCups);
-      if (user === null) {
-        return;
-      }
-      api.addCoffee(user, Date.now(), numCups);
-    }
+    // const setCoffee = (numCups: number) => {
+    //   console.log("cups received:", numCups);
+    //   if (user === null) {
+    //     return;
+    //   }
+    //   api.addCoffee(user, Date.now(), numCups);
+    // }
 
     return (
       <Screen preset="scroll" contentContainerStyle={$styles.container} safeAreaEdges={["top"]}>
         <Text preset="heading" tx="statsScreen:title" style={themed($title)} />
-        <View>
+        {/* <View>
         <Pressable
           style={[styles.button, styles.buttonOpen]}
           onPress={() => {setModalVisible(true); console.log("setting modal to visible")}}>
           <Text style={styles.textStyle}>Show Modal</Text>
         </Pressable>
         </View>
-        <AddCoffeeModal visible={modalVisible} setModalVisible={setModalVisible} setCoffee={setCoffee}/>
+        <AddCoffeeModal visible={modalVisible} setModalVisible={setModalVisible} setCoffee={setCoffee}/> */}
         <CafeStatsCard title="History" stats="Track your coffee intake over the past week!" graphData={{ labels: [], datasets: [{ data: history }] }} image={history_icon} money={null}/>
         <CafeStatsCard title="Money" stats="Tsk tsk... how much money you spent." graphData={null} image={coins_icon} money={money}/>
         <CafeStatsCard title="Trend" stats="Longest streak without drinking coffee!" graphData={null} image={trend_icon} money={null} />

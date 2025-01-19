@@ -18,11 +18,11 @@ export type TabParamList = {
   // DemoShowroom: { queryIndex?: string; itemIndex?: string }
   // DemoDebug: undefined
   // DemoPodcastList: undefined
-  BigButton: undefined
+  // BigButton: undefined
   Settings: undefined
   CoffeeScreen: undefined
   Stats: undefined
-  NotificationsDemo: undefined
+  // NotificationsDemo: undefined
 }
 
 /**
@@ -83,7 +83,7 @@ export function Navigator() {
         }}
       />
 
-      <Tab.Screen
+      {/* <Tab.Screen
         name="BigButton"
         component={BigButtonScreen}
         options={{
@@ -93,9 +93,9 @@ export function Navigator() {
             <Icon icon="clap" color={focused ? colors.tint : colors.tintInactive} size={30} />
           ),
         }}
-      />
+      /> */}
 
-      <Tab.Screen
+      {/* <Tab.Screen
         name="NotificationsDemo"
         component={NotificationsDemoScreen}
         options={{
@@ -105,7 +105,7 @@ export function Navigator() {
             <Icon icon="clap" color={focused ? colors.tint : colors.tintInactive} size={30} />
           ),
         }}
-      />
+      /> */}
 
       <Tab.Screen
         name="Settings"
