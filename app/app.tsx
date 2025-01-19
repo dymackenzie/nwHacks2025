@@ -10,12 +10,6 @@
  * The app navigation resides in ./app/navigators, so head over there
  * if you're interested in adding screens and navigators.
  */
-if (__DEV__) {
-  // Load Reactotron in development only.
-  // Note that you must be using metro's `inlineRequires` for this to work.
-  // If you turn it off in metro.config.js, you'll have to manually import it.
-  require("./devtools/ReactotronConfig.ts")
-}
 import "./utils/gestureHandler"
 import { initI18n } from "./i18n"
 import "./utils/ignoreWarnings"
@@ -40,6 +34,9 @@ const prefix = Linking.createURL("/")
 const config = {
   screens: {
     Login: {
+      path: "",
+    },
+    SignUp: {
       path: "",
     },
     Welcome: "welcome",
