@@ -65,7 +65,7 @@ export const StatsScreen: FC<TabScreenProps<"Stats">> =
         return;
       }
       setHistory(historyArray);
-      setHistory([1, 0, 1, 2, 0, 0, 1]);
+      setHistory([1, 0, 1, 2, 0, 0]);
     }
 
     const getMoney = () => {
