@@ -49,9 +49,6 @@ export const SettingsScreen: FC<TabScreenProps<"Settings">> = function SettingsS
     setThemeContextOverride(themeContext === "dark" ? "light" : "dark")
   }, [themeContext, setThemeContextOverride])
 
-  // Resets the theme to the system theme
-  const colorScheme = useColorScheme()
-
   return (
     <Screen
       preset="scroll"
