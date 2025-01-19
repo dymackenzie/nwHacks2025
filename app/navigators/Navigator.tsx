@@ -10,12 +10,14 @@ import type { ThemedStyle } from "@/theme"
 import { AppStackParamList, AppStackScreenProps } from "./AppNavigator"
 import { useAppTheme } from "@/utils/useAppTheme"
 import { StatsScreen } from "@/screens/StatsScreen"
+import { BigRedButtonScreen as BigButtonScreen } from "@/screens/BigButtonScreen"
 
 export type TabParamList = {
   DemoCommunity: undefined
   DemoShowroom: { queryIndex?: string; itemIndex?: string }
   DemoDebug: undefined
   DemoPodcastList: undefined
+  BigButton: undefined
   Stats: undefined
 }
 
@@ -96,6 +98,18 @@ export function Navigator() {
           tabBarLabel: translate("Navigator:podcastListTab"),
           tabBarIcon: ({ focused }) => (
             <Icon icon="podcast" color={focused ? colors.tint : colors.tintInactive} size={30} />
+          ),
+        }}
+      />
+
+      <Tab.Screen
+        name="BigButton"
+        component={BigButtonScreen}
+        options={{
+          tabBarAccessibilityLabel: translate("Navigator:buttonTab"),
+          tabBarLabel: translate("Navigator:buttonTab"),
+          tabBarIcon: ({ focused }) => (
+            <Icon icon="clap" color={focused ? colors.tint : colors.tintInactive} size={30} />
           ),
         }}
       />

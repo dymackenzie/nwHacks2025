@@ -48,6 +48,7 @@ const en = {
     debugTab: "Debug",
     communityTab: "Community",
     podcastListTab: "Podcast",
+    buttonTab: "Button"
   },
   statsScreen: {
     title: "Let's see how you're doing!",
