@@ -29,12 +29,9 @@ const config = {
     Welcome: "welcome",
     Demo: {
       screens: {
-        DemoShowroom: {
-          path: "showroom/:queryIndex?/:itemIndex?",
-        },
-        DemoDebug: "debug",
-        DemoPodcastList: "podcast",
-        DemoCommunity: "community",
+        Stats: "stats",
+        Coffee: "coffee",
+        Settings: "settings",
       },
     },
   },
