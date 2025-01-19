@@ -61,7 +61,7 @@ export const SettingsScreen: FC<TabScreenProps<"Settings">> = function SettingsS
         <Button style={themed($button)} onPress={toggleTheme} text={`Toggle Theme: ${themeContext}`} />
       </View>
       <View style={themed($buttonContainer)}>
-        <Button style={themed($button)} tx="common:logOut" onPress={logout} />
+        <Button style={themed($button)} tx="common:logOut" onPress={handleLogout} />
       </View>
     </Screen>
   )
@@ -80,6 +80,7 @@ const $itemsContainer: ThemedStyle<ViewStyle> = ({ spacing }) => ({
 })
 
 const $button: ThemedStyle<ViewStyle> = ({ spacing, colors }) => ({
+   
   marginTop: spacing.md,
   marginRight: spacing.lg,
   marginLeft: spacing.lg,
