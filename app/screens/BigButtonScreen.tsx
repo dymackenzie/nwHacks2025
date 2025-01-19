@@ -18,7 +18,7 @@ export const BigRedButtonScreen: FC<TabScreenProps<"BigButton">> =
     if (true) {
       console.log("sending request to send to arduino on 10.");
       try {
-        const response = await axios.post('http://10.43.183.251:5001/send', {
+        const response = await axios.post('http://206.87.115.76:5001/send', {
           msg: "press",
         });
         setMessage(response.data.message);

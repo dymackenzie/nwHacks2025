@@ -28,5 +28,5 @@ app.post('/send', (req, res) => {
 
 // Start the server
 app.listen(port, () => {
-  console.log(`Server running on http://10.43.183.251:${port}`);
+  console.log(`Server running on http://206.87.115.76:${port}`);
 });

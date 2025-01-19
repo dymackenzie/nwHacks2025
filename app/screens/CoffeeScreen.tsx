@@ -6,6 +6,7 @@ import { $styles } from "../theme"
 import type { ThemedStyle } from "@/theme"
 import { useAppTheme } from "@/utils/useAppTheme"
 import { add } from "date-fns"
+import axios from "axios"
 
 const coffee_button = require("../../assets/images/more_coffee.png")
 
@@ -25,7 +26,8 @@ const $iconStyle: ImageStyle = { width: 300, height: 300 }
 export const CoffeeScreen: FC<TabScreenProps<"CoffeeScreen">> =
   function CoffeeScreen(_props) {
     const [coffee, setCoffee] = useState<string>()
-    const { themed } = useAppTheme()
+    const { themed } = useAppTheme();
+    const [message, setMessage] = useState('');
 
     const submit = () => {
       var regExp = /[a-zA-Z]/g;
@@ -39,8 +41,15 @@ export const CoffeeScreen: FC<TabScreenProps<"CoffeeScreen">> =
       }
     }
 
-    const onCoffeePressed = () => {
-
+    const onCoffeePressed = async () => {
+      try {
+        const response = await axios.post('http://206.87.115.76:5001/send', {
+          msg: "press",
+        });
+        setMessage(response.data.message);
+      } catch (error) {
+        setMessage('Error communicating with the server');
+      }
     }
 
     return (

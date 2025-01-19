@@ -18,7 +18,7 @@
       "**/*"
     ],
     "android": {
-      "icon": "./assets/images/app-icon-android-legacy.png",
+      "icon": "./assets/images/Latte_Less.png",
       "package": "com.coffeeapp",
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/Latte_Less.png",
