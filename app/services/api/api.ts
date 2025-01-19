@@ -6,7 +6,7 @@ import Config from "../../config"
 import type { ApiConfig } from "./api.types"
 
 import { initializeApp } from "firebase/app";
-import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
+import { getFirestore, doc, getDoc, setDoc, updateDoc, arrayUnion } from "firebase/firestore";
 import type { UserSnapshotIn } from "../../models/User";
 import { getAuth } from "firebase/auth";
 
@@ -79,6 +79,25 @@ export class Api {
     } catch (e) {
       if (__DEV__ && e instanceof Error) {
         console.error(`Error adding user: ${e.message}`, e.stack);
+      }
+      return { kind: "bad-data" };
+    }
+  }
+
+  /**
+   * Updates times to drink coffee for a user.
+   */
+  async addTimesToDrinkCoffee(userId: string, date: Date): Promise<{ kind: "ok" } | { kind: "bad-data" }> {
+    try {
+      const db = getFirestore();
+      const userRef = doc(db, "users", userId);
+      await updateDoc(userRef, {
+        timesToDrinkCoffee: arrayUnion(date)
+      });
+      return { kind: "ok" };
+    } catch (e) {
+      if (__DEV__ && e instanceof Error) {
+        console.error(`Error updating times to drink coffee: ${e.message}`, e.stack);
       }
       return { kind: "bad-data" };
     }

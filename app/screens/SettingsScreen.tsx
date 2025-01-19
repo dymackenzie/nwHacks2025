@@ -83,8 +83,6 @@ export const SettingsScreen: FC<TabScreenProps<"Settings">> = function SettingsS
         <Button style={themed($button)} onPress={toggleTheme} text={`Toggle Theme: ${themeContext}`} />
       </View>
       <View style={themed($buttonContainer)}>
-        <Button style={themed($button)} tx="common:logOut" onPress={handleLogout} />
-      </View>
       <Button style={themed($button)} text="Pick a time" onPress={() => setShowTimePicker(true)} />
         {showTimePicker && (
           <DateTimePicker
@@ -95,6 +93,10 @@ export const SettingsScreen: FC<TabScreenProps<"Settings">> = function SettingsS
           />
         )}
         <Button style={themed($button)} text="Submit" onPress={onSubmit} />
+      </View>
+      <View style={themed($buttonContainer)}>
+        <Button style={themed($button)} tx="common:logOut" onPress={handleLogout} />
+      </View>
     </Screen>
   )
 }
