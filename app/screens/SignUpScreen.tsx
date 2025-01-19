@@ -80,7 +80,6 @@ export const SignUpScreen: FC<SignUpScreenProps> = observer(function SignUpScree
     >
       <Text testID="login-heading" tx="signUpScreen:signIn" preset="heading" style={$signIn} />
       <Text tx="signUpScreen:enterDetails" preset="subheading" style={$enterDetails} />
-      {attemptsCount > 2 && <Text tx="signUpScreen:hint" size="sm" weight="light" style={$hint} />}
 
       <TextField
         value={name}

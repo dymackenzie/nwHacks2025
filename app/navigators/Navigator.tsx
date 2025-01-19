@@ -1,10 +1,10 @@
 import { BottomTabScreenProps, createBottomTabNavigator } from "@react-navigation/bottom-tabs"
 import { CompositeScreenProps } from "@react-navigation/native"
-import { TextStyle, ViewStyle } from "react-native"
+import { Settings, TextStyle, ViewStyle } from "react-native"
 import { useSafeAreaInsets } from "react-native-safe-area-context"
 import { Icon } from "../components"
 import { translate } from "../i18n"
-import { DemoCommunityScreen, DemoShowroomScreen, DemoDebugScreen } from "../screens"
+import { DemoCommunityScreen, DemoShowroomScreen, SettingsScreen } from "../screens"
 import { DemoPodcastListScreen } from "../screens/DemoPodcastListScreen"
 import type { ThemedStyle } from "@/theme"
 import { AppStackParamList, AppStackScreenProps } from "./AppNavigator"
@@ -14,7 +14,7 @@ import { StatsScreen } from "@/screens/StatsScreen"
 export type TabParamList = {
   DemoCommunity: undefined
   DemoShowroom: { queryIndex?: string; itemIndex?: string }
-  DemoDebug: undefined
+  Settings: undefined
   DemoPodcastList: undefined
   Stats: undefined
 }
@@ -101,12 +101,12 @@ export function Navigator() {
       />
 
       <Tab.Screen
-        name="DemoDebug"
-        component={DemoDebugScreen}
+        name="Settings"
+        component={SettingsScreen}
         options={{
-          tabBarLabel: translate("Navigator:debugTab"),
+          tabBarLabel: "Settings",
           tabBarIcon: ({ focused }) => (
-            <Icon icon="debug" color={focused ? colors.tint : colors.tintInactive} size={30} />
+            <Icon icon="settings" color={focused ? colors.tint : colors.tintInactive} size={30} />
           ),
         }}
       />
