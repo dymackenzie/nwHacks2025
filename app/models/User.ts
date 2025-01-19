@@ -1,9 +1,9 @@
-import { Instance, SnapshotIn, SnapshotOut, types } from "mobx-state-tree"
+import { Instance, SnapshotIn, SnapshotOut, types, getSnapshot } from "mobx-state-tree"
 import { withSetPropAction } from "./helpers/withSetPropAction"
 
 export const CoffeeEntry = types.model({
-  date: types.string,
-  coffee: types.integer
+  date: "",
+  coffee: 0
 })
 
 /**
@@ -12,7 +12,6 @@ export const CoffeeEntry = types.model({
 export const UserModel = types
   .model("User")
   .props({
-    guid: types.identifier,
     name: "",
     email: "",
     timesToDrinkCoffee: types.array(types.Date),
@@ -77,7 +76,14 @@ export const UserModel = types
     },
     get moneySpent() {
       return this.totalCoffee * 3;
-    }
+    },
+    get coffeeHistoryArray() {
+      let array = new Array<number>();
+      for (const entry of user.coffeeHistory.values()) {
+        array.push(entry.coffee);
+      }
+      return array;
+    },
   }))
 
 export interface User extends Instance<typeof UserModel> {}

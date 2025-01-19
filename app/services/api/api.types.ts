@@ -14,10 +14,10 @@ export interface UserItem {
  * The options used to configure apisauce.
  */
 export interface ApiConfig {
-  apiKey: string
-  authDomain: string
-  projectId: string
-  storageBucket: string
-  messagingSenderId: string
-  appId: string
+  apiKey: any
+  authDomain: any
+  projectId: any
+  storageBucket: any
+  messagingSenderId: any
+  appId: any
 }

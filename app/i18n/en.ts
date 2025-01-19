@@ -28,20 +28,30 @@ const en = {
       button: "Let's try this again",
     },
   },
-
   errors: {
     invalidEmail: "Invalid email address.",
   },
   loginScreen: {
     logIn: "Log In",
     enterDetails:
-      "Enter your details below to unlock top secret info. You'll never guess what we've got waiting. Or maybe you will; it's not rocket science here.",
+      "Breaking coffee addictions one app at a time!",
     emailFieldLabel: "Email",
     passwordFieldLabel: "Password",
     emailFieldPlaceholder: "Enter your email address",
-    passwordFieldPlaceholder: "Super secret password here",
+    passwordFieldPlaceholder: "Enter your password",
     tapToLogIn: "Tap to log in!",
-    hint: "Hint: you can use any email address and your favorite password :)",
+  },
+  signUpScreen: {
+    signIn: "Sign In",
+    enterDetails:
+      "Let's do less latte!",
+    emailFieldLabel: "Email",
+    nameFieldLabel: "Name",
+    passwordFieldLabel: "Password",
+    emailFieldPlaceholder: "Enter your email address",
+    nameFieldPlaceholder: "Enter your name",
+    passwordFieldPlaceholder: "Enter your password",
+    tapToSignIn: "Tap to sign in!",
   },
   Navigator: {
     componentsTab: "Components",
@@ -52,6 +62,9 @@ const en = {
   },
   statsScreen: {
     title: "Let's see how you're doing!",
+  },
+  settingsScreen: {
+    title: "Settings",
   },
   demoCommunityScreen: {
     title: "Connect with the community",
