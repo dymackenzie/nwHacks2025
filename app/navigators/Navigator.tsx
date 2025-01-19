@@ -5,17 +5,15 @@ import { useSafeAreaInsets } from "react-native-safe-area-context"
 import { Icon } from "../components"
 import { translate } from "../i18n"
 import { DemoCommunityScreen, DemoShowroomScreen, SettingsScreen } from "../screens"
-import { DemoPodcastListScreen } from "../screens/DemoPodcastListScreen"
+import { CoffeeScreen } from "../screens/CoffeeScreen"
 import type { ThemedStyle } from "@/theme"
 import { AppStackParamList, AppStackScreenProps } from "./AppNavigator"
 import { useAppTheme } from "@/utils/useAppTheme"
 import { StatsScreen } from "@/screens/StatsScreen"
 
 export type TabParamList = {
-  DemoCommunity: undefined
-  DemoShowroom: { queryIndex?: string; itemIndex?: string }
   Settings: undefined
-  DemoPodcastList: undefined
+  CoffeeScreen: undefined
   Stats: undefined
 }
 
@@ -61,41 +59,18 @@ export function Navigator() {
         options={{
           tabBarLabel: "Stats",
           tabBarIcon: ({ focused }) => (
-            <Icon icon="stats" color={focused ? colors.tint : colors.tintInactive} size={30} />
+            <Icon icon="stats" color={focused ? colors.tint : colors.tintInactive} size={25} />
           ),
         }}
       />
 
       <Tab.Screen
-        name="DemoShowroom"
-        component={DemoShowroomScreen}
+        name="CoffeeScreen"
+        component={CoffeeScreen}
         options={{
-          tabBarLabel: translate("Navigator:componentsTab"),
+          tabBarLabel: "Coffee",
           tabBarIcon: ({ focused }) => (
-            <Icon icon="components" color={focused ? colors.tint : colors.tintInactive} size={30} />
-          ),
-        }}
-      />
-
-      <Tab.Screen
-        name="DemoCommunity"
-        component={DemoCommunityScreen}
-        options={{
-          tabBarLabel: translate("Navigator:communityTab"),
-          tabBarIcon: ({ focused }) => (
-            <Icon icon="community" color={focused ? colors.tint : colors.tintInactive} size={30} />
-          ),
-        }}
-      />
-
-      <Tab.Screen
-        name="DemoPodcastList"
-        component={DemoPodcastListScreen}
-        options={{
-          tabBarAccessibilityLabel: translate("Navigator:podcastListTab"),
-          tabBarLabel: translate("Navigator:podcastListTab"),
-          tabBarIcon: ({ focused }) => (
-            <Icon icon="podcast" color={focused ? colors.tint : colors.tintInactive} size={30} />
+            <Icon icon="coffee" color={focused ? colors.tint : colors.tintInactive} size={25} />
           ),
         }}
       />
@@ -106,7 +81,7 @@ export function Navigator() {
         options={{
           tabBarLabel: "Settings",
           tabBarIcon: ({ focused }) => (
-            <Icon icon="settings" color={focused ? colors.tint : colors.tintInactive} size={30} />
+            <Icon icon="settings" color={focused ? colors.tint : colors.tintInactive} size={25} />
           ),
         }}
       />

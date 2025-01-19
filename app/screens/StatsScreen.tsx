@@ -11,6 +11,7 @@ import { UserModel } from "@/models/User"
 
 const history_icon = require("../../assets/icons/project/history.png")
 const coins_icon = require("../../assets/icons/project/coins.png")
+const trend_icon = require("../../assets/icons/project/trend.png")
 
 export const StatsScreen: FC<TabScreenProps<"Stats">> =
   function StatsScreen(_props) {
@@ -63,7 +64,7 @@ export const StatsScreen: FC<TabScreenProps<"Stats">> =
         
         <CafeStatsCard title="History" stats="Track your coffee intake over the past week!" graphData={{ labels: [], datasets: [{ data: history }] }} image={history_icon} money={null}/>
         <CafeStatsCard title="Money" stats="Tsk tsk... how much money you spent." graphData={null} image={coins_icon} money={money}/>
-        
+        <CafeStatsCard title="Trend" stats="Longest streak without drinking coffee!" graphData={null} image={trend_icon} money={null} />
 
       </Screen>
     )

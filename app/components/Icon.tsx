@@ -94,6 +94,7 @@ export const iconRegistry = {
   caretRight: require("../../assets/icons/caretRight.png"),
   check: require("../../assets/icons/check.png"),
   clap: require("../../assets/icons/demo/clap.png"),
+  coffee: require("../../assets/icons/project/coffee_navbar.png"),
   community: require("../../assets/icons/demo/community.png"),
   components: require("../../assets/icons/demo/components.png"),
   debug: require("../../assets/icons/demo/debug.png"),

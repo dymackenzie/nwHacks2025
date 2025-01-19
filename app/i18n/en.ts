@@ -65,6 +65,13 @@ const en = {
   settingsScreen: {
     title: "Settings",
   },
+  coffee: {
+    title: "Drink Coffee? Press Coffee To Start",
+    description: "Press Coffee Cup",
+    coffeePromptLabel: "Manual addition",
+    coffeePrompt: "Put cups of coffee drank today",
+    submit: "Submit",
+  },
   demoCommunityScreen: {
     title: "Connect with the community",
     tagLine:
