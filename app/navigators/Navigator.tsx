@@ -114,9 +114,10 @@ export function Navigator() {
   )
 }
 
-const $tabBar: ThemedStyle<ViewStyle> = ({ colors }) => ({
+const $tabBar: ThemedStyle<ViewStyle> = ({ spacing, colors }) => ({
   backgroundColor: colors.background,
   borderTopColor: colors.transparent,
+  marginBottom: spacing.sm
 })
 
 const $tabBarItem: ThemedStyle<ViewStyle> = ({ spacing }) => ({
