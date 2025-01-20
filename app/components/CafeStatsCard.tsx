@@ -34,7 +34,7 @@ export const CafeStatsCard: React.FC<CafeStatsCardProps> = ({ title, stats, grap
           style={styles.chart}
         />
       )}
-      {money && <Text style={styles.money}>{money}</Text>}
+      {money && <Text style={styles.money}>{"$" + money}</Text>}
       
     </View>
   )
@@ -44,7 +44,7 @@ const chartConfig = {
   backgroundGradientFrom: colors.transparent,
   backgroundGradientTo: colors.transparent,
   backgroundGradientFromOpacity: 1,
-  color: (opacity = 1) => `rgba(193, 219, 212, ${opacity})`,
+  color: (opacity = 1) => `rgba(193, 200, 212, ${opacity})`,
   labelColor: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
   style: {
     borderRadius: 16,
@@ -93,10 +93,9 @@ const styles = StyleSheet.create({
     marginVertical: spacing.md,
   },
   money: {
-    fontSize: 16,
+    fontSize: 32,
     fontWeight: "bold",
     color: colors.error,
-    textAlign: "right",
-    marginTop: spacing.md,
+    textAlign: "left",
   }
 })

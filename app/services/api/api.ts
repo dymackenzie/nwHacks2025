@@ -6,7 +6,7 @@ import Config from "../../config"
 import type { ApiConfig } from "./api.types"
 
 import { initializeApp } from "firebase/app";
-import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
+import { getFirestore, doc, getDoc, setDoc, updateDoc, arrayUnion } from "firebase/firestore";
 import type { UserSnapshotIn } from "../../models/User";
 import { getAuth } from "firebase/auth";
 
