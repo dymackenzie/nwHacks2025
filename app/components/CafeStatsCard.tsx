@@ -41,18 +41,19 @@ export const CafeStatsCard: React.FC<CafeStatsCardProps> = ({ title, stats, grap
 }
 
 const chartConfig = {
-  backgroundGradientFrom: colors.transparent,
-  backgroundGradientTo: colors.transparent,
-  backgroundGradientFromOpacity: 1,
-  color: (opacity = 1) => `rgba(193, 200, 212, ${opacity})`,
-  labelColor: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
+  backgroundGradientFrom: "#f5f7fa",  // Light gradient background
+  backgroundGradientTo: "#e1e8f0",    // Slightly darker gradient for contrast
+  backgroundGradientFromOpacity: 0,  // Semi-transparent gradient
+  backgroundGradientToOpacity: 0,    // Semi-transparent gradient
+  color: (opacity = 1) => `rgba(78, 123, 233, ${opacity})`,  // Soft blue color for graph lines
+  labelColor: (opacity = 1) => `rgba(54, 54, 54, ${opacity})`,  // Darker color for labels
   style: {
     borderRadius: 16,
   },
   propsForDots: {
-    r: 6,  // Changed to number
-    strokeWidth: 2,  // Changed to number
-    stroke: colors.palette.primary500,
+    r: 6,  // Dots size
+    strokeWidth: 3,  // Border width of dots for a cleaner look
+    stroke: "#4e7bef",  // Border color of dots, soft blue
   },
 }
 
@@ -90,6 +91,7 @@ const styles = StyleSheet.create({
     marginBottom: spacing.md,
   },
   chart: {
+    backgroundColor: colors.transparent,
     marginVertical: spacing.md,
   },
   money: {

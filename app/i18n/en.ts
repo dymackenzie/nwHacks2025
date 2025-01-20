@@ -6,7 +6,7 @@ const en = {
     ok: "OK!",
     cancel: "Cancel",
     back: "Back",
-    logOut: "Log Out",
+    logOut: "Log In",
   },
   welcomeScreen: {
     postscript:
